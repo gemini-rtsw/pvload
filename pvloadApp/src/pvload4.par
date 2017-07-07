@@ -1,0 +1,51 @@
+# $Id: pvload4.par,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $
+#
+# named positions for device k0:dcs:dev1:
+# saved by wlupton@hana on Wed Oct 29 21:58:43 1997 UTC
+ 
+*long k0:dcs:dev1:resCmd = 1;
+ 
+%k0:dcs:dev1:query.J = 0;
+group {
+    %string k0:dcs:dev1:query.VALA;
+     string k0:dcs:dev1:control.A = "";
+    %string k0:dcs:dev1:query.VALB;
+     double k0:dcs:dev1:control.B = 0.0;
+    *long   k0:dcs:dev1:defCmd = 1;
+}
+
+%k0:dcs:dev1:query.J = 1;
+group {
+    %string k0:dcs:dev1:query.VALA;
+     string k0:dcs:dev1:control.A = "";
+    %string k0:dcs:dev1:query.VALB;
+     double k0:dcs:dev1:control.B = 0.0;
+    *long   k0:dcs:dev1:defCmd = 1;
+}
+
+%k0:dcs:dev1:query.J = 2;
+group {
+    %string k0:dcs:dev1:query.VALA;
+     string k0:dcs:dev1:control.A = "";
+    %string k0:dcs:dev1:query.VALB;
+     double k0:dcs:dev1:control.B = 0.0;
+    *long   k0:dcs:dev1:defCmd = 1;
+}
+
+%k0:dcs:dev1:query.J = 3;
+group {
+    %string k0:dcs:dev1:query.VALA;
+     string k0:dcs:dev1:control.A = "";
+    %string k0:dcs:dev1:query.VALB;
+     double k0:dcs:dev1:control.B = 0.0;
+    *long   k0:dcs:dev1:defCmd = 1;
+}
+
+%k0:dcs:dev1:query.J = 4;
+group {
+    %string k0:dcs:dev1:query.VALA;
+     string k0:dcs:dev1:control.A = "";
+    %string k0:dcs:dev1:query.VALB;
+     double k0:dcs:dev1:control.B = 0.0;
+    *long   k0:dcs:dev1:defCmd = 1;
+}

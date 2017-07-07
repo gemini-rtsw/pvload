@@ -1,0 +1,18 @@
+# $Id: pvload.par,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $
+#
+# Sample input file for pvload EPICS PV loader program
+
+group {
+    int $(aaa).VAL = 1;
+    double $(bbb) = 2;
+    ccc[4] = {
+	[0] -3.5e-4 * 1e4,
+	[2] 5 deg,
+	[1] -4 arcsec,
+	[3] 6 7
+    };
+    ddd[3] = { 0.1, 0.2, 0.3 };
+};
+
+string ddd = "freddy";
+eee = 7;

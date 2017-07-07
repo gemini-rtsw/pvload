@@ -1,0 +1,12 @@
+pvload / pvsave process variable load / save utilities (v2.12)
+--------------------------------------------------------------
+
+These utilities are supplied as-is but I will make every attempt to
+support them. Please send any comments or fixes to the e-mail address
+below.
+
+See the comments at the top of pvload.y for general usage information.
+
+UAE Makefiles are supplied; they may require local massage...
+
+William Lupton, wlupton@keck.hawaii.edu, 22-Sep-97

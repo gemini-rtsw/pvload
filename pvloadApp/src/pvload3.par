@@ -1,0 +1,30 @@
+# $Id: pvload3.par,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $
+#
+# Sample input file for pvload EPICS PV loader program; illustrates special
+# "%" lines which allow sending of commands at pvsave time and capturing of
+# arbitrary channel values into pvsave output files
+
+# These lines behave as comments to pvload but pvsave treats those with
+# assignments (i.e. "=" present) just as does as pvload, and treats those
+# without assignments as a request to read the current value of the named
+# channel; the value is remembered and is used on the next non "%" line
+
+# These just initialize two subsystems
+%k0:ao:ob:rot:init = 1;
+%k0:ao:ob:idc:init = 1;
+
+# This sets another channel (remember: only when pvsave is running)
+%k0:ao:sc:haltTimeout = 10000 mm;
+
+# This sets an associated channel to the above value (the spurious units
+# are used to verify that units conversion still works correctly
+# with "%" lines)
+k0:ao:sc:initTimeout = 0 arcsec;
+
+# This reads back the value of the channel
+%k0:ao:ob:idc:initActive;
+
+# This substitutes the above read-back value in the pvsave output file
+k0:ao:ob:rot:stby = 1000 mm;
+
+# $pvsaveLog$

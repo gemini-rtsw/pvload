@@ -1,0 +1,20 @@
+# $Id: pvload2.par,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $
+#
+# Sample input file for pvload EPICS PV loader program
+
+# full line comment
+group {
+
+    # indented comment
+    int    k0:dcs:chp:azGain.VAL = 1000 mm; # end-of-line comment
+    string k0:dcs:chp:elGain.VAL = "1";
+
+    # array layout is not preserved (sorry)
+    int    k0:dcs:chp:ec:inquire[4] = {
+		[0] 0,
+		[1] 1,
+		[2] 42, 43
+    };
+};
+
+# $pvsaveLog$
