@@ -1,5 +1,3 @@
-static char rcsid[] = "$Id: pvloadLib.c,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $";
-
 /*+*********************************************************************
   Module:       pvloadLib.c
 
@@ -27,7 +25,6 @@ static char rcsid[] = "$Id: pvloadLib.c,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $
 #include <string.h>
 #include <time.h>
 
-#include "tsDefs.h"		/* EPICS includes */
 #include "cadef.h"
 #include "macLib.h"
 #include "epicsPrint.h"
@@ -213,7 +210,7 @@ void
 pvloadStartGroup()
 {
     /* Handle debug and pvsave output */
-    pvloadPrint( "group {" );
+    epicsPrintf( "group {" );
 
     /* Groups are used only by pvload */
     if ( isPvload ) {
@@ -253,7 +250,7 @@ void
 pvloadEndGroup()
 {
     /* Handle debug and pvsave output */
-    pvloadPrint( "};" );
+    epicsPrintf( "};" );
 
     /* Groups are used only by pvload */
     if ( isPvload ) {
@@ -301,7 +298,7 @@ pvloadStartVariable( int percent )
     char buff[80];
 
     sprintf( buff, "%s", percent ? "%" : "" );
-    pvloadPrint( buff );
+    epicsPrintf( buff );
 
     /* Set everything to its default (not values, which are retained) */
 #ifdef EZCA
@@ -341,7 +338,7 @@ pvloadType( char *type )
 
     /* Handle debug and pvsave output */
     sprintf( buff, "%s ", type );
-    pvloadPrint( buff );
+    epicsPrintf( buff );
 
     /* Convert the type string (assumed valid) to an ezca / ca type */
 #ifdef EZCA
@@ -387,7 +384,7 @@ pvloadName( char *name )
 				  substName, sizeof( substName ) );
 
     /* Handle debug and pvsave output */
-    pvloadPrint( substName );
+    epicsPrintf( substName );
     firstValue = TRUE;
 
     /* Allocate memory for name */
@@ -428,7 +425,7 @@ pvloadCount( int count )
 
     /* Handle debug and pvsave output */
     sprintf( buff, "[%d]", count );
-    pvloadPrint( buff );
+    epicsPrintf( buff );
 
     /* String arrays are not yet (and probably never will be) supported. */
     /* Abort if someone's trying to use one. */
@@ -508,7 +505,7 @@ void
 pvloadEquals()
 {
     /* Handle debug and pvsave output */
-    pvloadPrint( " = " );
+    epicsPrintf( " = " );
 
     /* Note that the equals sign has been seen */
     currentEquals = TRUE;
@@ -542,7 +539,7 @@ pvloadIndex( int index )
 	sprintf( buff, "%s[%d] ", firstValue ? "" : ", ", index );
     else
 	sprintf( buff, "%s", firstValue ? "" : ", " );
-    pvloadPrint( buff );
+    epicsPrintf( buff );
     firstValue = FALSE;
 
     /* Ignore the rest if the index is negative */
@@ -719,7 +716,7 @@ pvloadString( char *value )
 exit:
     if ( currentEquals ) {
 	sprintf( buff, "\"%s\"", currentString );
-	pvloadPrint( buff );
+	epicsPrintf( buff );
     }
 }
 
@@ -739,7 +736,7 @@ exit:
 void
 pvloadScale( char *label, double value )
 {
-    double temp;
+    double temp=0.0;
     char buff[80];
 
 
@@ -799,7 +796,7 @@ pvloadScale( char *label, double value )
 	    sprintf( buff, "%g %g", temp, value );
 	else
 	    sprintf( buff, "%g", temp );
-	pvloadPrint( buff );
+	epicsPrintf( buff );
     }
 }
 
@@ -846,7 +843,7 @@ pvloadEndVariable()
     }
 
     /* Handle debug and pvsave output */
-    pvloadPrint( ";" );
+    epicsPrintf( ";" );
 
     /* If pvsave or pvload with "%" line, jump to exit processing */
     if ( currentIsPvsave || ( isPvload && currentPercent ) ) goto exit;
@@ -942,12 +939,12 @@ pvloadSleep( double delay )
 
     /* Handle debug and pvsave output */
     sprintf( buff, "sleep %.3f;\n", delay );
-    pvloadPrint( buff );
+    epicsPrintf( buff );
 
 #ifdef vxWorks
     taskDelay( ( int ) ( sysClkRateGet() * delay ) );
 #else
-    sleep( ( int ) ( delay + 0.5 ) );
+    epicsThreadSleep( ( int ) ( delay + 0.5 ) );
 #endif
 }
 
