@@ -210,7 +210,7 @@ void
 pvloadStartGroup()
 {
     /* Handle debug and pvsave output */
-    epicsPrintf( "group {" );
+    //epicsPrintf( "group {" );
 
     /* Groups are used only by pvload */
     if ( isPvload ) {
@@ -250,7 +250,7 @@ void
 pvloadEndGroup()
 {
     /* Handle debug and pvsave output */
-    epicsPrintf( "};" );
+    //epicsPrintf( "};" );
 
     /* Groups are used only by pvload */
     if ( isPvload ) {
@@ -295,10 +295,10 @@ pvloadEndGroup()
 void
 pvloadStartVariable( int percent )
 {
-    char buff[80];
+    //char buff[80];
 
-    sprintf( buff, "%s", percent ? "%" : "" );
-    epicsPrintf( buff );
+    //sprintf( buff, "%s", percent ? "%" : "" );
+   // epicsPrintf( buff );
 
     /* Set everything to its default (not values, which are retained) */
 #ifdef EZCA
@@ -333,12 +333,12 @@ pvloadStartVariable( int percent )
 void
 pvloadType( char *type )
 {
-    char buff[80];
+    //char buff[80];
 
 
     /* Handle debug and pvsave output */
-    sprintf( buff, "%s ", type );
-    epicsPrintf( buff );
+    // sprintf( buff, "%s ", type );
+    // epicsPrintf( buff );
 
     /* Convert the type string (assumed valid) to an ezca / ca type */
 #ifdef EZCA
@@ -384,7 +384,7 @@ pvloadName( char *name )
 				  substName, sizeof( substName ) );
 
     /* Handle debug and pvsave output */
-    epicsPrintf( substName );
+   // epicsPrintf( substName );
     firstValue = TRUE;
 
     /* Allocate memory for name */
@@ -424,8 +424,8 @@ pvloadCount( int count )
 
 
     /* Handle debug and pvsave output */
-    sprintf( buff, "[%d]", count );
-    epicsPrintf( buff );
+    //sprintf( buff, "[%d]", count );
+    //epicsPrintf( buff );
 
     /* String arrays are not yet (and probably never will be) supported. */
     /* Abort if someone's trying to use one. */
@@ -505,7 +505,7 @@ void
 pvloadEquals()
 {
     /* Handle debug and pvsave output */
-    epicsPrintf( " = " );
+   // epicsPrintf( " = " );
 
     /* Note that the equals sign has been seen */
     currentEquals = TRUE;
@@ -531,15 +531,15 @@ pvloadEquals()
 void
 pvloadIndex( int index )
 {
-    char buff[80];
+//    char buff[80];
 
 
     /* Handle debug and pvsave output */
-    if ( index >= 0 )
-	sprintf( buff, "%s[%d] ", firstValue ? "" : ", ", index );
-    else
-	sprintf( buff, "%s", firstValue ? "" : ", " );
-    epicsPrintf( buff );
+    //if ( index >= 0 )
+//	sprintf( buff, "%s[%d] ", firstValue ? "" : ", ", index );
+ //   else
+//	sprintf( buff, "%s", firstValue ? "" : ", " );
+   // epicsPrintf( buff );
     firstValue = FALSE;
 
     /* Ignore the rest if the index is negative */
@@ -716,7 +716,7 @@ pvloadString( char *value )
 exit:
     if ( currentEquals ) {
 	sprintf( buff, "\"%s\"", currentString );
-	epicsPrintf( buff );
+//	epicsPrintf( buff );
     }
 }
 
@@ -796,7 +796,7 @@ pvloadScale( char *label, double value )
 	    sprintf( buff, "%g %g", temp, value );
 	else
 	    sprintf( buff, "%g", temp );
-	epicsPrintf( buff );
+//	epicsPrintf( buff );
     }
 }
 
@@ -843,7 +843,7 @@ pvloadEndVariable()
     }
 
     /* Handle debug and pvsave output */
-    epicsPrintf( ";" );
+    //epicsPrintf( ";" );
 
     /* If pvsave or pvload with "%" line, jump to exit processing */
     if ( currentIsPvsave || ( isPvload && currentPercent ) ) goto exit;
