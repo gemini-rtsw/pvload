@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 1.2.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,5 +82,8 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Wed Dec 30 2020 Roberto Rojas <rrojas@gemini.edu> 1.2.1-3
+- new package built with tito
+
 * Wed Nov 18 2020 rrojas <rrojas@gemini.edu> 1.2.1
 - copy based on astlib module
