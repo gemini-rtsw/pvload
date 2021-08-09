@@ -22,6 +22,7 @@
 /* Include files */
 #include <stdio.h>		/* System includes */
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <time.h>
 
@@ -420,7 +421,7 @@ pvloadCount( int count )
 #else
     chid channelId;
 #endif
-    char buff[80];
+    /* char buff[80]; */
 
 
     /* Handle debug and pvsave output */

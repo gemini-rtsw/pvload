@@ -40,19 +40,19 @@ metres |
 m	{ return( tokenM ); }
 
 -?{digits}+ {
-	sscanf( yytext, "%d", &yylval.Int );
+	sscanf( (const char *) yytext, "%d", &yylval.Int );
 	return( tokenINTEGER );
 	}
 
 -?0[xX]{xdigits}+ {
-	sscanf( yytext, "%x", &yylval.Int );
+	sscanf(  (const char *) yytext, "%x", &yylval.Int );
 	return( tokenINTEGER );
 	}
 
 -?{digits}+"."{digits}*({exponent})?	|
 -?{digits}*"."{digits}+({exponent})?	|
 -?{digits}+{exponent} {
-	sscanf( yytext, "%lf", &yylval.Real );
+	sscanf(  (const char *) yytext, "%lf", &yylval.Real );
 	return( tokenREAL );
 	}
 
@@ -64,21 +64,21 @@ enum	|
 char	|
 long	|
 double {
-        yylval.Str = ( char * ) calloc( 1, strlen( yytext ) + 1 );
-        strcpy( yylval.Str, yytext );
+        yylval.Str = ( char * ) calloc( 1, strlen(  (const char *) yytext ) + 1 );
+        strcpy( yylval.Str, (const char *) yytext );
         return( tokenTYPE );
     }
 
 {pvname}+ {
-        yylval.Str = ( char * ) calloc( 1, strlen( yytext ) + 1 );
-        strcpy( yylval.Str, yytext );
+        yylval.Str = ( char * ) calloc( 1, strlen(  (const char *) yytext ) + 1 );
+        strcpy( yylval.Str,  (const char *) yytext );
         return( tokenPVNAME );
     }
 
 \"{string}*\" {
-        yylval.Str = ( char * ) calloc( 1, strlen( yytext ) + 1 );
+        yylval.Str = ( char * ) calloc( 1, strlen(  (const char *) yytext ) + 1 );
         /* make sure that neither double quote gets passed back */
-        strcpy( yylval.Str, yytext + 1 );
+        strcpy( yylval.Str,  (const char *) yytext + 1 );
         yylval.Str[strlen( yylval.Str ) - 1] = '\0';
 
         return( tokenSTRING );
@@ -95,23 +95,23 @@ double {
 ","	{ return( yytext[0] ); }
 ";"	{ return( yytext[0] ); }
 
-[ \t\r]*#.* { pvloadPrint( yytext ); }
+[ \t\r]*#.* { pvloadPrint( (char *) yytext ); }
 
 [ \t\r]*\*.* {
 	char *buff, *star;
-	buff = ( char * ) calloc( 1, strlen( yytext ) + 1 );
-	strcpy( buff, yytext );
+	buff = ( char * ) calloc( 1, strlen( (const char *) yytext  + 1 ));
+	strcpy( buff, (const char *)yytext );
 	star = strchr( buff, '*' );
 	if ( star != NULL ) *star = ' '; /* should never be NULL! */
 	pvloadPrint( buff );
 	free( buff );
     }
 
-^[ \t\r]* { pvloadPrint( yytext ); }
+^[ \t\r]* { pvloadPrint((char *) yytext ); }
 
 [ \t\r]* { /* ignore */ }
 
-\n	{ pvloadPrint( yytext ); line_num++; }
+\n	{ pvloadPrint((char *) yytext ); line_num++; }
 
 .	{ yyerror( "invalid character" ); }
 

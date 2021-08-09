@@ -1,5 +1,4 @@
 %{
-static char rcsid[] = "$Id: pvload.y,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $";
 
 /*+*********************************************************************
   Module:       pvload.{y,c}
@@ -290,8 +289,9 @@ static char rcsid[] = "$Id: pvload.y,v 1.1 2011/11/19 01:24:43 tcsuuser Exp $";
   *********************************************************************/
 
 /* Include files */
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> 
+#include <string.h> 
+#include <unistd.h> 
 
 #include "macLib.h"
 #include "epicsPrint.h"
@@ -607,7 +607,7 @@ main(
 				   pvload or is pvsave */
 
 
-    FILE *fd;			/* fd for input file */
+  /*  FILE *fd; */			/* fd for input file */
 
     char *file = NULL;		/* name of file containing list of PV
 				   assignments (if NULL, stdin is used) */
@@ -652,7 +652,7 @@ main(
 		flags |= OPT_FAIL;
 	    else if ( isPvsave && strcmp( argv[i], "-o" ) == 0 ) {
 		if ( i == argc - 1 ) {
-		    epicsPrintf( "%s: -o must be followed by output file\n",
+		    epicsPrintf( "%s: -o must be followed by output file %s\n",
 			         cmd, argv[i] );
 		    return -1;
 		}
@@ -763,9 +763,9 @@ work(
 
     MAC_HANDLE *substHandle;	/* macro substitution handle */
 
-    char substVersion[128];	/* substituted value of $(version) macro */
+    /* char substVersion[128];	 */ /* substituted value of $(version) macro */
 
-    char substEcVers[128];	/* substituted value of $(ecvers) macro */
+    /* char substEcVers[128]; */	/* substituted value of $(ecvers) macro */
 
     char search[512];		/* fopenData() search path */
 
@@ -849,7 +849,8 @@ work(
 #endif
 
     /* because of DCS reorg split, . dir was added */
-    sprintf( search, "%s:.", search );
+    /* sprintf( search, "%s:.", search ); */
+    sprintf( search, "%s", "."); 
     
     /* open input file (stdin if not supplied) */
     if ( file == NULL ) {

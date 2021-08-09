@@ -13,6 +13,7 @@
 #include "errlog.h"
 #include "epicsExport.h"
 
+int pvload(char *file, char *subst, int flags );
 
 /* pvload */
 
@@ -27,7 +28,7 @@ static const iocshArg * const pvloadArgs[3] =
 static const iocshFuncDef pvloadFuncDef = {"pvload",3,pvloadArgs};
 static void pvloadCallFunc(const iocshArgBuf *args)
 {
-    pvload (args[0].sval,args[1].sval,args[2].sval);
+    pvload (args[0].sval,args[1].sval,args[2].ival);
 }
 
 
