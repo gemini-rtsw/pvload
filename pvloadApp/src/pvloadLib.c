@@ -996,8 +996,8 @@ pvloadPrint( char *string )
 #endif
 	    strcpy( host, "<host>" );
 	    gethostname( host, sizeof( host ) );
-	    fprintf( outFd, "\n%.*ssaved by %s@%s on %.24s UTC",
-		     start - string, string, user, host, ascUtc );
+	    fprintf( outFd, "\n%s saved by %s@%s on %.24s UTC",
+		      string, user, host, ascUtc );
 	}
     }
 }

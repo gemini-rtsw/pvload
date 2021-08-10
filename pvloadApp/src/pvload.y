@@ -587,7 +587,7 @@ sleep
 /******************************************************************************/
 /* Start of code */
 
-#include "pvload_lex.c"
+#include <pvload_lex.c>
 
 #ifdef linux
 /* Unix main program (may be invoked as "pvload" or "pvsave") */
