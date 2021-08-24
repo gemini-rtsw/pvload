@@ -1,3 +1,16 @@
+*.swp
+*BAK.adl
+cdCommands
+envPaths
+*.bak
+O.*
+db
+dbd
+bin
+data
+include
+lib
+.git
 /configure/RELEASE.local
 /configure/CONFIG_SITE.local
 /.tito/releasers.conf
