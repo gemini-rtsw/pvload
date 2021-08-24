@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 1.2.1
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,12 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Tue Aug 24 2021 Matt Rippa <mrippa@gemini.edu> 1.2.1-4
+- Implement issue 1
+- Implements issues 2 to 14
+- Squash committed collectively with Tiffany, Felix and Matt. Merge ADE 2
+  release infrastructure updates from Fast Track 3.15 work into master
+
 * Wed Dec 30 2020 Roberto Rojas <rrojas@gemini.edu> 1.2.1-3
 - new package built with tito
 
