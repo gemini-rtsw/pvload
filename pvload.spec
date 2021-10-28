@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 1.2.1
-Release: 5%{?dist}
+Release: 6%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,19 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Thu Oct 28 2021 Matt Rippa <matt.rippa@noirlab.edu> 1.2.1-6
+- Updated RELEASE.NOTES
+- New gem-ci update with gem-init-project.sh
+- Update .gitlab-ci.yml: upfated to softtcs_mk
+-         modified:   .gitlab-ci.yml: test with examplesoftioc
+-  Changes to be committed:       modified:   .gitlab-ci.yml: Test pipeline to
+  tcs_mk and unstable state
+-  Changes to be committed:       modified:   .gitlab-ci.yml: Changed to
+  BASE_CONTAINER: "registry.gitlab.com/nsf-
+  noirlab/gemini/rtsw/iocs/softtcs_mk/unstable/containerization:latest"
+- Changed .gitignore
+- gem-init-project.sh
+
 * Tue Aug 24 2021 Matt Rippa <mrippa@gemini.edu> 1.2.1-5
 - gem-init-project.sh for exampleSoftIOC
 
