@@ -19,7 +19,7 @@
 Summary: %{name} Package, a module for EPICS base
 Name: %{name}
 Version: 1.2.1
-Release: 6%{?dist}
+Release: 7%{?dist}
 License: EPICS Open License
 Group: Applications/Engineering
 Source0: %{name}-%{version}.tar.gz
@@ -82,6 +82,13 @@ rm -rf $RPM_BUILD_ROOT
    /%{_prefix}/%{name}/configure
 
 %changelog
+* Sat Feb 19 2022 Matt Rippa <matt.rippa@noirlab.edu> 1.2.1-7
+- Rebuild for unstable/2022q1-tr4. See Test Release issue nsf-
+  noirlab/gemini/rtsw/epics-base/epics-base#10
+- Process by pipeline (unstable/2022q1)
+- Update gem-ci and branch to stable/2021q4
+- updated gem-ci submodule to newest version for fixing failed pipeline
+
 * Thu Oct 28 2021 Matt Rippa <matt.rippa@noirlab.edu> 1.2.1-6
 - Updated RELEASE.NOTES
 - New gem-ci update with gem-init-project.sh
