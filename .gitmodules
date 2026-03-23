@@ -1,4 +1,7 @@
+[submodule ".ci"]
+	path = .ci
+	url = https://github.com/epics-base/ci-scripts
 [submodule "gem-ci"]
 	path = gem-ci
 	url = ../../gem-ci
-	branch = unstable/2024q3
+	branch = testing/2026q2-gnao
